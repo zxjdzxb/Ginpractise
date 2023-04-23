@@ -1,7 +1,6 @@
 package main
 
 import (
-	"log"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -18,11 +17,12 @@ func setupRouter() *gin.Engine {
 		c.String(http.StatusOK, "Who are you?")
 	})
 	r.GET("/ping", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{
-			"message": "pong",
-		})
-		c.Writer.Write([]byte("\nhello world"))
-		log.Println("测试信息")
+		// c.JSON(http.StatusOK, gin.H{
+		// 	"message": "pong",
+		// })
+		c.String(200, "pong")
+		// c.Writer.Write([]byte("\nhello world"))
+		// log.Println("测试信息")
 	})
 	r.GET("/user/:name", func(c *gin.Context) {
 		name := c.Param("name")
